@@ -81,15 +81,10 @@ for (x in seq(1,6,1)) {
 
 
 #make a word cloud for first 100 packages in the dataframe
-install.packages("tm")  # for text mining
-install.packages("SnowballC") # for text stemming
-install.packages("wordcloud") # word-cloud generator 
-install.packages("RColorBrewer") # color palettes
-# Load
-library("tm")
-library("SnowballC")
-library("wordcloud")
-library("RColorBrewer")
+library("tm") # for text mining
+library("SnowballC")  # for text stemming
+library("wordcloud") # word-cloud generator 
+library("RColorBrewer") # color palettes
 words <- Corpus(VectorSource(pkg_info[1:100,]$Description))
 inspect(words)
 toSpace <- content_transformer(function (x , pattern ) gsub(pattern, " ", x))
@@ -113,13 +108,13 @@ words <- tm_map(words, stripWhitespace)
 # Text stemming
 # docs <- tm_map(docs, stemDocument)
 
-dtm <- TermDocumentMatrix(words)
-m <- as.matrix(dtm)
-v <- sort(rowSums(m),decreasing=TRUE)
-d <- data.frame(word = names(v),freq=v)
+datamtrx <- TermDocumentMatrix(words)
+mtrx <- as.matrix(datatmtrx)
+sorted_mtrx <- sort(rowSums(mtrx),decreasing=TRUE)
+df_mtrx <- data.frame(word = names(sorted_mtrx),freq=sorted_mtrx)
 
 set.seed(1234)
-wordcloud(words = d$word, freq = d$freq, min.freq = 1,
+wordcloud(words = df_mtrx$word, freq = df_mtrx$freq, min.freq = 1,
           max.words=200, random.order=FALSE, rot.per=0.35, 
           colors=brewer.pal(8, "Dark2"))
 
@@ -127,12 +122,12 @@ wordcloud(words = d$word, freq = d$freq, min.freq = 1,
 #make a network of dependencies,the network here has been obtained for first 1000 packages only
 library(pkggraph)
 library(stringr)
-graph_mat <- matrix(0L, nrow = 1000, ncol = 1000)
-colnames(graph_mat) <- pkg_info[1:1000,]$Package
-rownames(graph_mat) <- pkg_info[1:1000,]$Package
+graph_mat <- matrix(0L, nrow = 500, ncol = 500)
+colnames(graph_mat) <- pkg_info[1:500,]$Package
+rownames(graph_mat) <- pkg_info[1:500,]$Package
 tot_dep <- c()
 
-for (x  in seq(1,1000,1)) {
+for (x  in seq(1,500,1)) {
   dependencies <- pkg_info[x,]$Imports
   dependencies  <- gsub("[^A-Za-z///' ]","'" , dependencies ,ignore.case = TRUE)
   dependencies <- gsub("'","" , dependencies ,ignore.case = TRUE)
@@ -140,10 +135,8 @@ for (x  in seq(1,1000,1)) {
   dependencies <- dependencies[[1]][-which(dependencies[[1]] == "")]
   tot_dep <- c(tot_dep, dependencies)
   if(length(dependencies)){
-    print("ok")
-  for (y in seq(1,length(dependencies),1)) {
-    print(length(dependencies))#which(colnames(graph_mat) == dependencies[x]))
-    graph_mat[x,which(colnames(graph_mat) == dependencies[y])] = 1  
+    for (y in seq(1,length(dependencies),1)) {
+        graph_mat[x,which(colnames(graph_mat) == dependencies[y])] = 1  
   }
   }
 }
@@ -153,7 +146,7 @@ graph = graph.adjacency(graph_mat, mode = "directed")
 isolated_vertices = which(degree(graph)==0)
 graph2 = delete.vertices(graph, isolated_vertices)
 plot(graph2,layout=layout_with_fr, vertex.size=5,
-     vertex.label.dist=0.15, vertex.color="red", edge.arrow.size=0.15)
+     vertex.label.dist=0.15, vertex.color="yellow", edge.arrow.size=0.15)
 
 
 
