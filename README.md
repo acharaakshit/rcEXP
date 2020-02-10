@@ -15,10 +15,10 @@ A word cloud of the most common words used in the description of the packages ca
 A word cloud obtained by scraping a sample of 1000 packages can be seen below :
 
 
-![img](https://raw.githubusercontent.com/acharaakshit/rcEXP/master/word_cloud.png)
+![img](word_cloud.png)
 
 A dependency network graph can also be obtained for the packages.
-A dependency netwrok created by using a sample of 1000 packages can be seen below:
+A dependency netwrok created by using a sample of 500 packages can be seen below:
 
 ![img](dependency_network.png) 
 
