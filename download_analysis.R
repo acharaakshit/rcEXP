@@ -90,3 +90,22 @@ for (x in seq(as.numeric(start_year),as.numeric(end_year),1)) {
   print("The total number of package downloads in the year was : ")
   print(total_package_downloads)
 }
+
+#top downloaded packages
+when <- "last-day"
+count <- 1000
+req <- GET(paste0(top50_url,'/', when, '/', count),httr::user_agent("cranlogs R package by R-hub"))
+stop_for_status(req)
+r <- fromJSON(content(req, as = "text", encoding = "UTF-8"), 
+              simplifyVector = FALSE)
+
+top50_package_names <- c()
+top50_package_download_counts <- c()
+for(x in seq(1, 50,1)){
+  top50_package_names <- c(top50_package_names,r[["downloads"]][[x]][["package"]])
+  top50_package_download_counts <- c(top50_package_download_counts,as.numeric(r[["downloads"]][[x]][["downloads"]]))
+}
+
+top50 <- cbind.data.frame(top50_package_names, top50_package_download_counts)
+print("The top 50 downloaded packages in the given time span are")
+print(top50)
