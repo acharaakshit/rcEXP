@@ -18,6 +18,9 @@ A word cloud obtained by scraping a sample of 1000 packages can be seen below :
 ![img](https://raw.githubusercontent.com/acharaakshit/rcEXP/master/word_cloud.png)
 
 A dependency network graph can also be obtained for the packages.
+A dependency netwrok created by using a sample of 1000 packages can be seen below:
+
+![img](https://raw.githubusercontent.com/acharaakshit/rcEXP/master/dependency_network.png) 
 
 Twitter exploration(Current Status):
 The api can be used to get all the tweets which are using #rstats
