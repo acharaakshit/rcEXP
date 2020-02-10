@@ -22,8 +22,8 @@ A dependency netwrok created by using a sample of 500 packages can be seen below
 
 ![img](dependency_network.png) 
 
-Twitter exploration(Current Status):
-The api can be used to get all the tweets which are using #rstats
+Twitter exploration:
+
 
 and
 
