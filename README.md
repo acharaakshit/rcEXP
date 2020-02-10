@@ -13,6 +13,8 @@ The popular packages(assuming it to be same as the trending packages), popular a
 
 A word cloud of the most common words used in the description of the packages can also be obtained.
 A word cloud obtained by scraping a sample of 1000 packages can be seen below :
+
+
 ![img](https://raw.githubusercontent.com/acharaakshit/rcEXP/master/word_cloud.png)
 
 A dependency network graph can also be obtained for the packages.
