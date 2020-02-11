@@ -35,6 +35,15 @@ A dependency netwrok created by using a sample of 500 packages can be seen below
 
 Twitter exploration:
 
+The information about #rstats tweets including and excluding retweets is stored and filtered.
+
+The frequency plot of tweets containing #rstats including retweets is shown below.
+
+![img](rstats_with_rts.png)
+
+The frequency plot of tweets containing #rstats excluding retweets is shown below.
+
+![img](rstats_without_rts.png)
 
 and
 
