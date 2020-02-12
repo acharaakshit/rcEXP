@@ -48,6 +48,7 @@ The frequency plot of tweets containing #rstats excluding retweets is shown belo
 and
 
 Github exploration:
+
 The search functionality has been added which searches through R repositories from github.
 The searches have been sorted based on the number of stars.
 The most starred repositories can also be obtained.
