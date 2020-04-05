@@ -1,9 +1,10 @@
 # rcEXP
-The scripts to perform R community exploration
+
+This repository contains the scripts to perform  R community exploration.
 
 The exploration has been performed at three platforms,namely
 
-CRAN exploration(Current status):
+##CRAN exploration(Current status):
 
 The data of all the packages of CRAN is stored in a dataframe and the data is tidied by removing the rows without a package name or a date(The filtering criteria can be modified according to the requirements).
 
@@ -33,7 +34,7 @@ A dependency netwrok created by using a sample of 500 packages can be seen below
 
 ![img](dependency_network.png) 
 
-Twitter exploration:
+##Twitter exploration:
 
 The information about #rstats tweets including and excluding retweets is stored and filtered.
 
@@ -47,7 +48,7 @@ The frequency plot of tweets containing #rstats excluding retweets is shown belo
 
 and
 
-Github exploration:
+##Github exploration:
 
 The search functionality has been added which searches through R repositories from github.
 The searches have been sorted based on the number of stars.
